@@ -5,6 +5,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>azure_app_saahil_vs</RootNamespace>
+    <ApplicationInsightsResourceId>/subscriptions/e7a1215f-bde6-4dc6-abbb-a519db7f2217/resourceGroups/az-rg-saahil/providers/microsoft.insights/components/azure-app-saahil-vs</ApplicationInsightsResourceId>
+    <UserSecretsId>f8353532-4d22-4457-9a39-866b0a58a603</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
+  </ItemGroup>
 
 </Project>

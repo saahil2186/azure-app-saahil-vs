@@ -14,6 +14,7 @@ namespace azure_app_saahil_vs.Pages
 
         public void OnGet()
         {
+            throw new Exception("Testing Application Insights");
         }
     }
 
