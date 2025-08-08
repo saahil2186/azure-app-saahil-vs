@@ -1,10 +1,10 @@
-name: Build and deploy .NET Core application to Web App azure-app-saahil-vs
+name: Build and deploy .NET Core application to Web App azure-app-saahil-vs202508
 on:
   push:
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: azure-app-saahil-vs
+  AZURE_WEBAPP_NAME: azure-app-saahil-vs202508
   AZURE_WEBAPP_PACKAGE_PATH: .\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
@@ -44,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.azure_app_saahil_vs_505C }}
+        publish-profile: ${{ secrets.azure_app_saahil_vs202508_7810 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
