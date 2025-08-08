@@ -32,3 +32,33 @@ jobs:
         with:
           name: .net-app
           path: ${{env.GITHUB_WORKSPACE}}/myapp
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_21B524F389594DF58CB00158DF1BF821 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C3844C672B124371A04C59DF577F00CC }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0228612940C8499EA7B1D8BF8E2AC573 }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'azure-app-saahil-vs'
+          slot-name: 'Production'
+          package: .
